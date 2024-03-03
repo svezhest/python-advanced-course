@@ -1,0 +1,22 @@
+┌──(user㉿kali)-[~/Desktop/studying/python-advanced-course/hw_1]
+└─$ wc 1.1.py                  
+ 21  49 431 1.1.py
+                                                                                                                              
+┌──(user㉿kali)-[~/Desktop/studying/python-advanced-course/hw_1]
+└─$ python 1.3.py 1.1.py       
+21 49 431 1.1.py
+                                                                                                                              
+┌──(user㉿kali)-[~/Desktop/studying/python-advanced-course/hw_1]
+└─$ wc 1.1.py 1.2.py           
+  21   49  431 1.1.py
+  27   58  631 1.2.py
+  48  107 1062 total
+                                                                                                                              
+┌──(user㉿kali)-[~/Desktop/studying/python-advanced-course/hw_1]
+└─$ python 1.3.py 1.1.py 1.2.py
+21 49 431 1.1.py
+27 58 631 1.2.py
+48 107 1062 total
+                                                                                                                              
+┌──(user㉿kali)-[~/Desktop/studying/python-advanced-course/hw_1]
+└─$ 
