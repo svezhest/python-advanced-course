@@ -14,4 +14,4 @@ def generate_latex_table(matrix):
 
 
 def insert_image_latex(image_path):
-    return f'\\begin{{figure}}\n\\centering\n\\end{{figure}}\\includegraphics[width=\\textwidth]{{{image_path}}}\n'
+    return f'\\begin{{figure}}\n\\centering\n\\end{{figure}}\\includegraphics[width=\\textwidth]{{"{image_path}"}}\n'
