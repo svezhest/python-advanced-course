@@ -11,7 +11,7 @@ def main():
 
     text = '\\documentclass{article}\n\\begin{document}\n' + \
         generate_latex_table(matrix) + '\n\\end{document}'
-    with open('artifacts/2.1.txt', 'w') as f:
+    with open('artifacts/2.1.tex', 'w') as f:
         f.write(text)
 
 
