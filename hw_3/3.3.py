@@ -3,6 +3,11 @@ import matrix_mixin
 
 
 class HashMixin:
+    # простой хэш, напоминающий реальный хэщ для строки,
+    # только не использующий степени, и за счёт этого
+    # легко приводящий к коллизиям. кроме того,
+    # коллизии возникнут при преобразовании float -> int.
+    # оно и прекрасно. мы же хотим коллизии
     def __hash__(self) -> int:
         res = 0
 
@@ -48,7 +53,8 @@ def main():
 
     with open(f'{artifacts_dir}/hash.txt', 'w') as f:
         f.write(
-            f'hash a: {hash(a)}\nhash b: {hash(b)}\nhash c: {hash(c)}\nhash d: {hash(d)}\nhash ab: {hash(ab)}\nhash cd_fake: {hash(cd_fake)}\nhash cd: {hash(cd)}')
+            f'hash a: {hash(a)}\nhash b: {hash(b)}\nhash c: {hash(c)}\n' +
+            f'hash d: {hash(d)}\nhash ab: {hash(ab)}\nhash cd_fake: {hash(cd_fake)}\nhash cd: {hash(cd)}')
 
 
 if __name__ == '__main__':
