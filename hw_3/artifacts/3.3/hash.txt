@@ -1,0 +1,7 @@
+hash a: 465
+hash b: 259
+hash c: 465
+hash d: 259
+hash ab: 8774371888457
+hash cd_fake: 8774371888457
+nhash cd: 8774372419141
