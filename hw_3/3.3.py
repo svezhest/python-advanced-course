@@ -1,4 +1,3 @@
-import numpy as np
 import matrix_mixin
 
 
