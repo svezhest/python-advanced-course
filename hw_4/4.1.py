@@ -9,9 +9,10 @@
 '''
 
 import sys
-import time
 import threading
 import multiprocessing
+
+from helpers import timeit
 
 
 def fibonacci(n):
@@ -23,13 +24,6 @@ def fibonacci(n):
         return 1
 
     return fibonacci(n - 1) + fibonacci(n - 2)
-
-
-def timeit(job, *args):
-    start = time.perf_counter()
-    job(*args)
-    end = time.perf_counter()
-    print(job.__name__, end - start)
 
 
 def single_thread(x, n_times):
