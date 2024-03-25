@@ -29,19 +29,17 @@ def integrate_parallel(executor, f, chunks):
     return sum(future.result() for future in futures)
 
 
-def integrate_threads(f, a, b, *, n_jobs, n_iter):
+def integrate_threads(f, chunks, *, n_jobs):
     print(f'jobs = {n_jobs}, ', end='')
     res = None
-    chunks = integrate_get_chunks(a, b, n_chunks=n_jobs * 10, n_iter=n_iter)
     with ThreadPoolExecutor(max_workers=n_jobs) as executor:
         res = integrate_parallel(executor, f, chunks)
     print(f'res = {res}, ', end='')
 
 
-def integrate_processes(f, a, b, *, n_jobs, n_iter):
+def integrate_processes(f, chunks, *, n_jobs):
     print(f'jobs = {n_jobs}, ', end='')
     res = None
-    chunks = integrate_get_chunks(a, b, n_chunks=n_jobs * 10, n_iter=n_iter)
     with ProcessPoolExecutor(max_workers=n_jobs) as executor:
         res = integrate_parallel(executor, f, chunks)
     print(f'res = {res}, ', end='')
@@ -62,13 +60,12 @@ def main():
 
     timeit(single_job, math.cos, 0, math.pi / 2, n_iter=n_iter)
 
+   
     for n_jobs in range(1, multiprocessing.cpu_count() * 2):
-        timeit(integrate_threads, math.cos, 0,
-               math.pi / 2, n_jobs=n_jobs, n_iter=n_iter)
+        chunks = integrate_get_chunks(0, math.pi / 2, n_chunks=n_jobs * 10, n_iter=n_iter) 
+        timeit(integrate_threads, math.cos, chunks, n_jobs=n_jobs)
+        timeit(integrate_processes, math.cos, chunks, n_jobs=n_jobs)
 
-    for n_jobs in range(1, multiprocessing.cpu_count() * 2):
-        timeit(integrate_processes, math.cos, 0,
-               math.pi / 2, n_jobs=n_jobs, n_iter=n_iter)
 
 
 if __name__ == "__main__":
